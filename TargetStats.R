@@ -45,8 +45,10 @@ groups <- function(count,points) {
 testRifle <- function(moa, count=1000) {
   r <- target(moa,count)
   for(i in 2:20) { 
-    g <- mean(groups(i,r));
-    print(sprintf("%4g %4d shot groups, size: %.2f, factor: %.2f", floor(count/i), i, g, moa/g));
+    gs <- groups(i,r);
+    g <- mean(gs);
+    s <- sd(gs);
+    print(sprintf("%4g %4d shot groups, size: %.2f moa, stdev: %.2f moa, factor: %.2f", floor(count/i), i, g, s, moa/g));
   }
 }
 testRifle(0.7)
